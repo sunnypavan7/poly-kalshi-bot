@@ -1,0 +1,17 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(rm -f *.py .env.example .gitignore requirements.txt)",
+      "Bash(mkdir -p backend/api backend/core backend/data backend/models backend/ai cli frontend/src/components)",
+      "Bash(pip install:*)",
+      "Bash(python -c \"import backend.config, backend.models.database, backend.data.weather, backend.data.polymarket, backend.data.kalshi_client, backend.data.kalshi_markets, backend.data.weather_markets, backend.data.btc_markets, backend.data.crypto, backend.data.markets, backend.core.edge, backend.core.signals, backend.core.weather_signals, backend.core.scheduler, backend.core.settlement, backend.ai.base, backend.ai.claude, backend.ai.groq, backend.ai.logger, backend.api.main\")",
+      "Bash(python -c \"import cli.alerts, cli.scanner, cli.dashboard, cli.backtest\")",
+      "Bash(python main.py --backtest --cities nyc --start 2024-01-01 --end 2024-02-01)",
+      "Bash(python main.py --backtest --cities nyc,chicago,los_angeles,miami,toronto,dallas,seattle,london,paris,berlin,madrid,amsterdam,tokyo,seoul,beijing,singapore,sydney,hong_kong,dubai,buenos_aires,sao_paulo --start 2026-03-03 --end 2026-04-03)",
+      "Bash(python main.py --backtest --cities nyc chicago los_angeles miami toronto dallas seattle london paris berlin madrid amsterdam tokyo seoul beijing singapore sydney hong_kong dubai buenos_aires sao_paulo --start 2026-03-03 --end 2026-04-03)",
+      "Bash(python main.py --backtest --cities nyc chicago los_angeles miami toronto dallas seattle london paris berlin madrid amsterdam tokyo seoul beijing singapore sydney hong_kong dubai buenos_aires sao_paulo --start 2026-01-03 --end 2026-04-03)",
+      "Bash(python main.py --backtest --cities nyc chicago los_angeles miami toronto dallas seattle london paris berlin madrid amsterdam tokyo seoul beijing singapore sydney hong_kong dubai buenos_aires sao_paulo --start 2025-10-03 --end 2026-04-03)",
+      "Bash(python main.py --backtest --cities nyc chicago los_angeles miami toronto dallas seattle london paris berlin madrid amsterdam tokyo seoul beijing singapore sydney hong_kong dubai buenos_aires sao_paulo --start 2025-04-03 --end 2026-04-03)"
+    ]
+  }
+}

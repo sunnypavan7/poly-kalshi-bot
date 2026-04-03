@@ -1,0 +1,8 @@
+content = open('cli/backtest.py').read() 
+content = content.replace('from config import CITIES, MIN_EDGE, BANKROLL, MAX_BET_USD, KELLY_FRACTION', 'from backend.config import settings, CITIES') 
+content = content.replace('MIN_EDGE', 'settings.WEATHER_MIN_EDGE_THRESHOLD') 
+content = content.replace('BANKROLL', 'settings.BANKROLL') 
+content = content.replace('MAX_BET_USD', 'settings.MAX_BET_USD') 
+content = content.replace('KELLY_FRACTION', 'settings.CLI_KELLY_FRACTION') 
+content = content.replace('from weather import', 'from backend.data.weather import') 
+open('cli/backtest.py', 'w').write(content) 

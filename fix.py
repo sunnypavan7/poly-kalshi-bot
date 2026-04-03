@@ -1,0 +1,7 @@
+content = open('main.py').read() 
+content = content.replace('from config import', 'from backend.config import') 
+content = content.replace('from scanner import', 'from backend.core.scanner import') 
+content = content.replace('from backtest import', 'from cli.backtest import') 
+content = content.replace('from dashboard import', 'from cli.dashboard import') 
+content = content.replace('from alerts import', 'from cli.alerts import') 
+open('main.py', 'w').write(content) 
