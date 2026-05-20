@@ -1,0 +1,60 @@
+export const packages = [
+  {
+    id: 'editorial',
+    name: 'Editorial',
+    tagline: 'Fashion, commercial, and fine-art commissions.',
+    price: 'From £4,800',
+    duration: '1–3 days',
+    includes: [
+      'Pre-production concept development',
+      'Location scouting and permits',
+      'Full day(s) on location',
+      'Retouching of selected finals',
+      '30–80 high-resolution deliverables',
+      'Print-ready and digital formats',
+      'Usage rights as agreed',
+    ],
+    note: 'Rates vary by usage scope, team size, and production complexity. All editorial work includes a pre-shoot consultation and creative brief development.',
+  },
+  {
+    id: 'portrait',
+    name: 'Portrait & Story',
+    tagline: 'Individuals, creatives, and long-form documentary.',
+    price: 'From £1,200',
+    duration: 'Half day – 2 days',
+    includes: [
+      'Pre-shoot conversation and brief',
+      'Location selection (studio or environmental)',
+      'Up to 4 hours on location',
+      'Full retouch of selected images',
+      '15–40 high-resolution deliverables',
+      'Web-optimized and full-resolution exports',
+      'Personal use license',
+    ],
+    note: 'For ongoing documentary projects and extended portrait series, bespoke day rates are available.',
+  },
+  {
+    id: 'wedding',
+    name: 'Wedding & Ceremony',
+    tagline: 'Quiet, documentary, and film-influenced.',
+    price: 'From £3,600',
+    duration: 'Full day',
+    includes: [
+      'Initial consultation and timeline planning',
+      'Getting-ready through reception',
+      'Second shooter available (add-on)',
+      'Online gallery within 6 weeks',
+      '400–600 edited photographs',
+      'Private web gallery for sharing',
+      'Full-resolution download for print',
+    ],
+    note: 'International weddings available; travel and accommodation costs added to base rate. Limited to 12 weddings per year.',
+  },
+]
+
+export const addOns = [
+  { name: 'Film photography', description: 'Medium format film alongside digital. Scanned high-resolution.' },
+  { name: 'Same-day preview', description: '10 edited previews delivered within 24 hours.' },
+  { name: 'Album design', description: 'Bespoke printed album design and production.' },
+  { name: 'Video highlights', description: '3–5 minute cinematic film. Refers to our trusted film partners.' },
+]
