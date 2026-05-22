@@ -2,58 +2,59 @@ import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import ScrollReveal from '../components/ScrollReveal'
 
-const projectTypes = ['Editorial', 'Portrait', 'Wedding', 'Commercial', 'Travel', 'Other']
-const budgetRanges = ['Under £2,000', '£2,000–5,000', '£5,000–10,000', '£10,000+', 'Let\'s discuss']
+const projectTypes = ['Wedding', 'Portrait', 'Commercial', 'Events', 'Other']
+const budgetRanges = ['Under ₹20,000', '₹20,000–50,000', '₹50,000–1,00,000', '₹1,00,000+', "Let's discuss"]
+
+const inputStyle = (focused, field) => ({
+  width: '100%',
+  background: 'transparent',
+  border: 'none',
+  borderBottom: `1px solid ${focused === field ? 'var(--color-accent)' : 'var(--color-border)'}`,
+  color: 'var(--color-white)',
+  fontFamily: 'var(--font-sans)',
+  fontWeight: 300,
+  fontSize: '1rem',
+  padding: '10px 4px 10px 0',
+  outline: 'none',
+  transition: 'border-color 0.2s',
+})
 
 export default function Contact() {
-  const [form, setForm] = useState({
-    name: '', email: '', projectType: '', budget: '', message: '', timeline: '',
-  })
+  const [form, setForm] = useState({ name: '', email: '', phone: '', projectType: '', budget: '', message: '', timeline: '' })
   const [submitted, setSubmitted] = useState(false)
   const [focused, setFocused] = useState(null)
 
   const set = (field) => (e) => setForm(f => ({ ...f, [field]: e.target.value }))
-
-  const handleSubmit = (e) => {
-    e.preventDefault()
-    setSubmitted(true)
-  }
-
-  const inputClass = (field) => `
-    w-full bg-transparent border-0 border-b text-[var(--color-warm-white)] font-sans font-light text-base py-3 pr-2
-    placeholder:text-[var(--color-muted-dark)] transition-colors duration-200 outline-none
-    ${focused === field ? 'border-[var(--color-accent)]' : 'border-[var(--color-border)] hover:border-[var(--color-muted-dark)]'}
-  `
+  const handleSubmit = (e) => { e.preventDefault(); setSubmitted(true) }
 
   return (
     <main>
       {/* Header */}
-      <section className="relative pt-36 md:pt-44 pb-20 overflow-hidden border-b border-[var(--color-border)]">
-        {/* {/* REPLACE: subtle background image for contact page */}
+      <section className="relative overflow-hidden" style={{ paddingTop: 'clamp(100px, 12vw, 160px)', paddingBottom: 64, borderBottom: '1px solid var(--color-border)' }}>
         <img
-          src="https://images.unsplash.com/photo-1554048612-b6a482bc67e5?auto=format&fit=crop&w=1920&q=20"
+          src="https://images.unsplash.com/photo-1469334031218-e382a71b716b?auto=format&fit=crop&w=1920&q=15"
           alt=""
-          className="absolute inset-0 w-full h-full object-cover opacity-10"
+          className="absolute inset-0 w-full h-full object-cover"
+          style={{ opacity: 0.07 }}
           aria-hidden="true"
-          loading="eager"
         />
-        <div className="relative z-10 max-w-[1440px] mx-auto px-8 md:px-16">
+        <div className="relative z-10 max-w-[1440px] mx-auto px-6 md:px-12">
           <ScrollReveal>
-            <p className="font-sans text-xs tracking-[0.2em] uppercase text-[var(--color-accent)] mb-4">
+            <p style={{ fontFamily: 'var(--font-sans)', fontWeight: 500, fontSize: '0.72rem', letterSpacing: '0.2em', textTransform: 'uppercase', color: 'var(--color-accent)', marginBottom: 14 }}>
               Contact
             </p>
-            <h1 className="font-display font-light text-5xl md:text-7xl leading-none tracking-[-0.03em] text-[var(--color-warm-white)] mb-6">
-              Start a<br />conversation.
+            <h1 style={{ fontFamily: 'var(--font-display)', fontWeight: 800, fontSize: 'clamp(3rem, 8vw, 6rem)', lineHeight: 0.9, letterSpacing: '-0.03em', color: 'var(--color-white)', marginBottom: 20 }}>
+              Let's talk.
             </h1>
-            <p className="font-sans font-light text-lg text-[var(--color-muted)] max-w-md">
-              Tell us about your project. We read every inquiry personally and respond within 48 hours.
+            <p style={{ fontFamily: 'var(--font-sans)', fontWeight: 300, fontSize: '1rem', color: 'var(--color-muted)', maxWidth: 380, lineHeight: 1.7 }}>
+              Tell us about your project. We read every inquiry personally and respond within 24 hours.
             </p>
           </ScrollReveal>
         </div>
       </section>
 
       {/* Form + info */}
-      <section className="max-w-[1440px] mx-auto px-8 md:px-16 py-24 md:py-36">
+      <section className="max-w-[1440px] mx-auto px-6 md:px-12" style={{ paddingTop: 'clamp(60px, 8vw, 100px)', paddingBottom: 'clamp(60px, 8vw, 100px)' }}>
         <div className="grid grid-cols-1 md:grid-cols-12 gap-16 md:gap-24">
 
           {/* Form */}
@@ -63,70 +64,72 @@ export default function Contact() {
                 <motion.div
                   key="success"
                   initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0, transition: { duration: 0.6, ease: [0.16, 1, 0.3, 1] } }}
-                  className="py-20"
+                  animate={{ opacity: 1, y: 0, transition: { duration: 0.55, ease: [0.16, 1, 0.3, 1] } }}
+                  style={{ paddingTop: 48, paddingBottom: 48 }}
                 >
-                  <div className="w-12 h-px bg-[var(--color-accent)] mb-8" aria-hidden="true" />
-                  <h2 className="font-display font-light text-4xl text-[var(--color-warm-white)] mb-4">
+                  <div style={{ width: 40, height: 2, background: 'var(--color-accent)', marginBottom: 28 }} aria-hidden="true" />
+                  <h2 style={{ fontFamily: 'var(--font-display)', fontWeight: 800, fontSize: 'clamp(2rem, 4vw, 3rem)', color: 'var(--color-white)', marginBottom: 14, lineHeight: 1 }}>
                     Thank you, {form.name.split(' ')[0]}.
                   </h2>
-                  <p className="font-sans font-light text-[var(--color-muted)] leading-relaxed mb-2">
-                    We've received your inquiry.
-                  </p>
-                  <p className="font-sans font-light text-[var(--color-muted)] leading-relaxed">
-                    We'll be in touch within 48 hours.
+                  <p style={{ fontFamily: 'var(--font-sans)', fontWeight: 300, color: 'var(--color-muted)', lineHeight: 1.7, fontSize: '0.93rem' }}>
+                    We've received your message and will be in touch within 24 hours.<br />
+                    WhatsApp works too if you're in a hurry.
                   </p>
                 </motion.div>
               ) : (
                 <motion.form
                   key="form"
                   onSubmit={handleSubmit}
-                  className="space-y-10"
+                  style={{ display: 'flex', flexDirection: 'column', gap: 36 }}
                   noValidate
                 >
                   <ScrollReveal>
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                      <div>
-                        <label className="block font-sans text-[10px] tracking-[0.2em] uppercase text-[var(--color-muted)] mb-2" htmlFor="name">
-                          Name *
-                        </label>
-                        <input
-                          id="name"
-                          type="text"
-                          required
-                          value={form.name}
-                          onChange={set('name')}
-                          onFocus={() => setFocused('name')}
-                          onBlur={() => setFocused(null)}
-                          className={inputClass('name')}
-                          placeholder="Your full name"
-                          autoComplete="name"
-                        />
-                      </div>
-                      <div>
-                        <label className="block font-sans text-[10px] tracking-[0.2em] uppercase text-[var(--color-muted)] mb-2" htmlFor="email">
-                          Email *
-                        </label>
-                        <input
-                          id="email"
-                          type="email"
-                          required
-                          value={form.email}
-                          onChange={set('email')}
-                          onFocus={() => setFocused('email')}
-                          onBlur={() => setFocused(null)}
-                          className={inputClass('email')}
-                          placeholder="your@email.com"
-                          autoComplete="email"
-                        />
-                      </div>
+                      {[
+                        { id: 'name', label: 'Full Name *', type: 'text', placeholder: 'Your name', required: true, autoComplete: 'name' },
+                        { id: 'email', label: 'Email *', type: 'email', placeholder: 'your@email.com', required: true, autoComplete: 'email' },
+                      ].map(({ id, label, type, placeholder, required, autoComplete }) => (
+                        <div key={id}>
+                          <label style={{ display: 'block', fontFamily: 'var(--font-sans)', fontWeight: 600, fontSize: '0.65rem', letterSpacing: '0.2em', textTransform: 'uppercase', color: 'var(--color-muted)', marginBottom: 8 }} htmlFor={id}>
+                            {label}
+                          </label>
+                          <input
+                            id={id}
+                            type={type}
+                            required={required}
+                            value={form[id]}
+                            onChange={set(id)}
+                            onFocus={() => setFocused(id)}
+                            onBlur={() => setFocused(null)}
+                            style={inputStyle(focused, id)}
+                            placeholder={placeholder}
+                            autoComplete={autoComplete}
+                          />
+                        </div>
+                      ))}
                     </div>
                   </ScrollReveal>
 
                   <ScrollReveal delay={0.05}>
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                       <div>
-                        <label className="block font-sans text-[10px] tracking-[0.2em] uppercase text-[var(--color-muted)] mb-2" htmlFor="projectType">
+                        <label style={{ display: 'block', fontFamily: 'var(--font-sans)', fontWeight: 600, fontSize: '0.65rem', letterSpacing: '0.2em', textTransform: 'uppercase', color: 'var(--color-muted)', marginBottom: 8 }} htmlFor="phone">
+                          Phone (WhatsApp)
+                        </label>
+                        <input
+                          id="phone"
+                          type="tel"
+                          value={form.phone}
+                          onChange={set('phone')}
+                          onFocus={() => setFocused('phone')}
+                          onBlur={() => setFocused(null)}
+                          style={inputStyle(focused, 'phone')}
+                          placeholder="+91 98765 43210"
+                          autoComplete="tel"
+                        />
+                      </div>
+                      <div>
+                        <label style={{ display: 'block', fontFamily: 'var(--font-sans)', fontWeight: 600, fontSize: '0.65rem', letterSpacing: '0.2em', textTransform: 'uppercase', color: 'var(--color-muted)', marginBottom: 8 }} htmlFor="projectType">
                           Project Type
                         </label>
                         <select
@@ -135,15 +138,19 @@ export default function Contact() {
                           onChange={set('projectType')}
                           onFocus={() => setFocused('projectType')}
                           onBlur={() => setFocused(null)}
-                          className={inputClass('projectType') + ' cursor-pointer'}
-                          style={{ background: 'var(--color-black)' }}
+                          style={{ ...inputStyle(focused, 'projectType'), background: 'var(--color-black)', cursor: 'pointer' }}
                         >
-                          <option value="">Select a type</option>
+                          <option value="">Select type</option>
                           {projectTypes.map(t => <option key={t} value={t}>{t}</option>)}
                         </select>
                       </div>
+                    </div>
+                  </ScrollReveal>
+
+                  <ScrollReveal delay={0.1}>
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                       <div>
-                        <label className="block font-sans text-[10px] tracking-[0.2em] uppercase text-[var(--color-muted)] mb-2" htmlFor="budget">
+                        <label style={{ display: 'block', fontFamily: 'var(--font-sans)', fontWeight: 600, fontSize: '0.65rem', letterSpacing: '0.2em', textTransform: 'uppercase', color: 'var(--color-muted)', marginBottom: 8 }} htmlFor="budget">
                           Budget Range
                         </label>
                         <select
@@ -152,37 +159,33 @@ export default function Contact() {
                           onChange={set('budget')}
                           onFocus={() => setFocused('budget')}
                           onBlur={() => setFocused(null)}
-                          className={inputClass('budget') + ' cursor-pointer'}
-                          style={{ background: 'var(--color-black)' }}
+                          style={{ ...inputStyle(focused, 'budget'), background: 'var(--color-black)', cursor: 'pointer' }}
                         >
                           <option value="">Approximate budget</option>
                           {budgetRanges.map(b => <option key={b} value={b}>{b}</option>)}
                         </select>
                       </div>
-                    </div>
-                  </ScrollReveal>
-
-                  <ScrollReveal delay={0.1}>
-                    <div>
-                      <label className="block font-sans text-[10px] tracking-[0.2em] uppercase text-[var(--color-muted)] mb-2" htmlFor="timeline">
-                        Timeline
-                      </label>
-                      <input
-                        id="timeline"
-                        type="text"
-                        value={form.timeline}
-                        onChange={set('timeline')}
-                        onFocus={() => setFocused('timeline')}
-                        onBlur={() => setFocused(null)}
-                        className={inputClass('timeline')}
-                        placeholder="e.g. September 2025, flexible, ASAP"
-                      />
+                      <div>
+                        <label style={{ display: 'block', fontFamily: 'var(--font-sans)', fontWeight: 600, fontSize: '0.65rem', letterSpacing: '0.2em', textTransform: 'uppercase', color: 'var(--color-muted)', marginBottom: 8 }} htmlFor="timeline">
+                          Timeline / Date
+                        </label>
+                        <input
+                          id="timeline"
+                          type="text"
+                          value={form.timeline}
+                          onChange={set('timeline')}
+                          onFocus={() => setFocused('timeline')}
+                          onBlur={() => setFocused(null)}
+                          style={inputStyle(focused, 'timeline')}
+                          placeholder="e.g. Feb 2026 wedding, flexible"
+                        />
+                      </div>
                     </div>
                   </ScrollReveal>
 
                   <ScrollReveal delay={0.12}>
                     <div>
-                      <label className="block font-sans text-[10px] tracking-[0.2em] uppercase text-[var(--color-muted)] mb-2" htmlFor="message">
+                      <label style={{ display: 'block', fontFamily: 'var(--font-sans)', fontWeight: 600, fontSize: '0.65rem', letterSpacing: '0.2em', textTransform: 'uppercase', color: 'var(--color-muted)', marginBottom: 8 }} htmlFor="message">
                         Tell us about the project *
                       </label>
                       <textarea
@@ -193,8 +196,8 @@ export default function Contact() {
                         onChange={set('message')}
                         onFocus={() => setFocused('message')}
                         onBlur={() => setFocused(null)}
-                        className={inputClass('message') + ' resize-none'}
-                        placeholder="What are you making, and why does it matter?"
+                        style={{ ...inputStyle(focused, 'message'), resize: 'none' }}
+                        placeholder="What are you planning, and what matters most about how it's captured?"
                       />
                     </div>
                   </ScrollReveal>
@@ -202,10 +205,12 @@ export default function Contact() {
                   <ScrollReveal delay={0.15}>
                     <button
                       type="submit"
-                      className="font-sans font-medium text-sm tracking-[0.1em] uppercase bg-[var(--color-warm-white)] text-[var(--color-black)] px-10 py-4 hover:bg-[var(--color-accent)] transition-colors duration-300 flex items-center gap-3"
+                      style={{ display: 'inline-flex', alignItems: 'center', gap: 12, fontFamily: 'var(--font-sans)', fontWeight: 700, fontSize: '0.82rem', letterSpacing: '0.12em', textTransform: 'uppercase', background: 'var(--color-accent)', color: 'var(--color-black)', padding: '16px 32px', border: 'none', cursor: 'pointer', transition: 'background 0.2s' }}
+                      onMouseEnter={e => e.currentTarget.style.background = '#e04400'}
+                      onMouseLeave={e => e.currentTarget.style.background = 'var(--color-accent)'}
                     >
-                      Send Inquiry
-                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+                      Send Message
+                      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                         <path d="M5 12h14M12 5l7 7-7 7" />
                       </svg>
                     </button>
@@ -215,55 +220,54 @@ export default function Contact() {
             </AnimatePresence>
           </div>
 
-          {/* Studio info */}
+          {/* Info sidebar */}
           <aside className="md:col-span-4 md:col-start-9">
             <ScrollReveal delay={0.2} direction="left">
-              <div className="space-y-10">
+              <div style={{ display: 'flex', flexDirection: 'column', gap: 32 }}>
+                {[
+                  { label: 'Email', value: 'hello@popstudios.in', href: 'mailto:hello@popstudios.in' },
+                  { label: 'WhatsApp', value: '+91 98765 43210', href: 'https://wa.me/919876543210' },
+                  { label: 'Instagram', value: '@popstudios', href: 'https://instagram.com/popstudios' },
+                ].map(({ label, value, href }) => (
+                  <div key={label}>
+                    <p style={{ fontFamily: 'var(--font-sans)', fontWeight: 600, fontSize: '0.62rem', letterSpacing: '0.2em', textTransform: 'uppercase', color: 'var(--color-muted-dark)', marginBottom: 8 }}>
+                      {label}
+                    </p>
+                    <a
+                      href={href}
+                      target={href.startsWith('http') ? '_blank' : undefined}
+                      rel={href.startsWith('http') ? 'noopener noreferrer' : undefined}
+                      style={{ fontFamily: 'var(--font-sans)', fontWeight: 300, color: 'var(--color-white)', fontSize: '0.9rem', transition: 'color 0.15s' }}
+                      onMouseEnter={e => e.currentTarget.style.color = 'var(--color-accent)'}
+                      onMouseLeave={e => e.currentTarget.style.color = 'var(--color-white)'}
+                    >
+                      {value}
+                    </a>
+                  </div>
+                ))}
+
                 <div>
-                  <p className="font-sans text-[10px] tracking-[0.2em] uppercase text-[var(--color-muted-dark)] mb-3">
-                    Email
-                  </p>
-                  <a
-                    href="mailto:hello@popstudios.com"
-                    className="font-sans font-light text-[var(--color-warm-white)] hover:text-[var(--color-accent)] transition-colors"
-                  >
-                    hello@popstudios.com
-                  </a>
-                </div>
-                <div>
-                  <p className="font-sans text-[10px] tracking-[0.2em] uppercase text-[var(--color-muted-dark)] mb-3">
-                    Instagram
-                  </p>
-                  <a
-                    href="https://instagram.com"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="font-sans font-light text-[var(--color-warm-white)] hover:text-[var(--color-accent)] transition-colors"
-                  >
-                    @popstudios
-                  </a>
-                </div>
-                <div>
-                  <p className="font-sans text-[10px] tracking-[0.2em] uppercase text-[var(--color-muted-dark)] mb-3">
+                  <p style={{ fontFamily: 'var(--font-sans)', fontWeight: 600, fontSize: '0.62rem', letterSpacing: '0.2em', textTransform: 'uppercase', color: 'var(--color-muted-dark)', marginBottom: 8 }}>
                     Studio
                   </p>
-                  <p className="font-sans font-light text-sm text-[var(--color-muted)] leading-relaxed">
-                    Hackney, London<br />
-                    Available worldwide
-                  </p>
-                </div>
-                <div>
-                  <p className="font-sans text-[10px] tracking-[0.2em] uppercase text-[var(--color-muted-dark)] mb-3">
-                    Response time
-                  </p>
-                  <p className="font-sans font-light text-sm text-[var(--color-muted)]">
-                    Within 48 hours
+                  <p style={{ fontFamily: 'var(--font-sans)', fontWeight: 300, fontSize: '0.88rem', color: 'var(--color-muted)', lineHeight: 1.7 }}>
+                    Bandra West, Mumbai<br />
+                    Available pan-India
                   </p>
                 </div>
 
-                <div className="pt-6 border-t border-[var(--color-border)]">
-                  <p className="font-sans font-light text-xs text-[var(--color-muted-dark)] leading-relaxed italic">
-                    We take on 20–30 commissions per year. If the project resonates, we make it work.
+                <div>
+                  <p style={{ fontFamily: 'var(--font-sans)', fontWeight: 600, fontSize: '0.62rem', letterSpacing: '0.2em', textTransform: 'uppercase', color: 'var(--color-muted-dark)', marginBottom: 8 }}>
+                    Response Time
+                  </p>
+                  <p style={{ fontFamily: 'var(--font-sans)', fontWeight: 300, fontSize: '0.88rem', color: 'var(--color-muted)' }}>
+                    Within 24 hours
+                  </p>
+                </div>
+
+                <div style={{ paddingTop: 20, borderTop: '1px solid var(--color-border)' }}>
+                  <p style={{ fontFamily: 'var(--font-sans)', fontWeight: 300, fontSize: '0.78rem', color: 'var(--color-muted-dark)', lineHeight: 1.75, fontStyle: 'italic' }}>
+                    We take 25–30 weddings per year and limited commercial projects. Inquiry early for peak season dates (Oct–Feb).
                   </p>
                 </div>
               </div>

@@ -5,35 +5,52 @@ export default function Footer() {
   const year = new Date().getFullYear()
 
   return (
-    <footer className="border-t border-[var(--color-border)] bg-[var(--color-black)]">
-      <div className="max-w-[1440px] mx-auto px-8 md:px-16 py-16 md:py-20">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-8">
-          <ScrollReveal>
+    <footer style={{ borderTop: '1px solid var(--color-border)', background: 'var(--color-black)' }}>
+      <div className="max-w-[1440px] mx-auto px-6 md:px-12 py-16 md:py-20">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-12 md:gap-8">
+
+          <ScrollReveal className="md:col-span-2">
             <Link
               to="/"
-              className="font-display font-light text-2xl tracking-[0.15em] uppercase text-[var(--color-warm-white)] hover:text-[var(--color-accent)] transition-colors duration-300 block mb-4"
+              className="block mb-5"
+              style={{ fontFamily: 'var(--font-display)', fontWeight: 700, fontSize: '1.5rem', letterSpacing: '-0.01em', textTransform: 'uppercase', color: 'var(--color-white)' }}
+              aria-label="PopStudios home"
             >
-              Pop<span className="text-[var(--color-accent)]">Studios</span>
+              Pop<span style={{ color: 'var(--color-accent)' }}>Studios</span>
             </Link>
-            <p className="text-[var(--color-muted)] text-sm leading-relaxed max-w-xs">
-              Gallery-grade photography.<br />
-              London &amp; worldwide.
+            <p style={{ fontFamily: 'var(--font-sans)', fontWeight: 300, fontSize: '0.9rem', lineHeight: 1.7, color: 'var(--color-muted)', maxWidth: 280 }}>
+              Mumbai-based photography studio.<br />
+              Weddings, portraits, commercial &amp; events.<br />
+              Available across India.
             </p>
+            <div className="flex gap-5 mt-6">
+              <a href="https://instagram.com/popstudios" target="_blank" rel="noopener noreferrer"
+                style={{ fontFamily: 'var(--font-sans)', fontSize: '0.72rem', letterSpacing: '0.12em', textTransform: 'uppercase', color: 'var(--color-muted)' }}
+                className="hover:text-[var(--color-white)] transition-colors"
+              >Instagram</a>
+              <a href="https://wa.me/919876543210" target="_blank" rel="noopener noreferrer"
+                style={{ fontFamily: 'var(--font-sans)', fontSize: '0.72rem', letterSpacing: '0.12em', textTransform: 'uppercase', color: 'var(--color-muted)' }}
+                className="hover:text-[var(--color-white)] transition-colors"
+              >WhatsApp</a>
+            </div>
           </ScrollReveal>
 
           <ScrollReveal delay={0.1}>
-            <p className="text-xs tracking-[0.12em] uppercase text-[var(--color-muted-dark)] mb-5">Navigation</p>
+            <p style={{ fontFamily: 'var(--font-sans)', fontSize: '0.65rem', letterSpacing: '0.14em', textTransform: 'uppercase', color: 'var(--color-muted-dark)', marginBottom: 20 }}>
+              Explore
+            </p>
             <nav className="flex flex-col gap-3">
               {[
                 { to: '/portfolio', label: 'Portfolio' },
-                { to: '/about', label: 'About' },
                 { to: '/services', label: 'Services' },
+                { to: '/about', label: 'About' },
                 { to: '/contact', label: 'Contact' },
               ].map(({ to, label }) => (
                 <Link
                   key={to}
                   to={to}
-                  className="text-sm text-[var(--color-muted)] hover:text-[var(--color-warm-white)] transition-colors duration-200"
+                  style={{ fontFamily: 'var(--font-sans)', fontSize: '0.85rem', color: 'var(--color-muted)' }}
+                  className="hover:text-[var(--color-white)] transition-colors duration-150"
                 >
                   {label}
                 </Link>
@@ -42,32 +59,38 @@ export default function Footer() {
           </ScrollReveal>
 
           <ScrollReveal delay={0.2}>
-            <p className="text-xs tracking-[0.12em] uppercase text-[var(--color-muted-dark)] mb-5">Contact</p>
+            <p style={{ fontFamily: 'var(--font-sans)', fontSize: '0.65rem', letterSpacing: '0.14em', textTransform: 'uppercase', color: 'var(--color-muted-dark)', marginBottom: 20 }}>
+              Contact
+            </p>
             <div className="flex flex-col gap-3">
-              <a
-                href="mailto:hello@popstudios.com"
-                className="text-sm text-[var(--color-muted)] hover:text-[var(--color-warm-white)] transition-colors duration-200"
+              <a href="mailto:hello@popstudios.in"
+                style={{ fontFamily: 'var(--font-sans)', fontSize: '0.85rem', color: 'var(--color-muted)' }}
+                className="hover:text-[var(--color-white)] transition-colors"
               >
-                hello@popstudios.com
+                hello@popstudios.in
               </a>
-              <a
-                href="https://instagram.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-sm text-[var(--color-muted)] hover:text-[var(--color-warm-white)] transition-colors duration-200"
+              <a href="tel:+919876543210"
+                style={{ fontFamily: 'var(--font-sans)', fontSize: '0.85rem', color: 'var(--color-muted)' }}
+                className="hover:text-[var(--color-white)] transition-colors"
               >
-                @popstudios
+                +91 98765 43210
               </a>
+              <p style={{ fontFamily: 'var(--font-sans)', fontSize: '0.82rem', color: 'var(--color-muted)', lineHeight: 1.6, marginTop: 4 }}>
+                Bandra West, Mumbai<br />
+                Available pan-India
+              </p>
             </div>
           </ScrollReveal>
+
         </div>
 
-        <div className="mt-16 pt-8 border-t border-[var(--color-border)] flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
-          <p className="text-xs text-[var(--color-muted)] tracking-[0.06em]">
+        <div className="mt-16 pt-8 flex flex-col md:flex-row justify-between items-start md:items-center gap-3"
+          style={{ borderTop: '1px solid var(--color-border)' }}>
+          <p style={{ fontFamily: 'var(--font-sans)', fontSize: '0.72rem', color: 'var(--color-muted-dark)', letterSpacing: '0.04em' }}>
             © {year} PopStudios. All rights reserved.
           </p>
-          <p className="text-xs text-[var(--color-muted-dark)] tracking-[0.06em]">
-            London, UK
+          <p style={{ fontFamily: 'var(--font-sans)', fontSize: '0.72rem', color: 'var(--color-muted-dark)', letterSpacing: '0.04em' }}>
+            Mumbai, India
           </p>
         </div>
       </div>

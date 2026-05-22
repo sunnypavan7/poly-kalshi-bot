@@ -1,29 +1,23 @@
 import { Link } from 'react-router-dom'
-import { motion } from 'framer-motion'
 import ScrollReveal from '../components/ScrollReveal'
 
-const press = [
-  'Vogue Italia', 'AnOther Magazine', 'British Journal of Photography',
-  'National Geographic', 'Wallpaper*', 'i-D',
-]
-
 const clients = [
-  'Zaha Hadid Architects', 'Aesop', 'Dior Beauty', 'NET-A-PORTER',
-  'The Guardian', 'Christie\'s', 'Soho House',
+  'Fabindia', 'Tanishq', 'Nykaa Fashion', 'YourStory Media',
+  'Rolling Stone India', 'Vogue India', 'Hindustan Unilever', 'CRED',
 ]
 
 const philosophy = [
   {
-    heading: 'Light first',
-    body: 'Every decision — location, timing, equipment — begins with a conversation about light. We don\'t manufacture it; we find it.',
+    heading: 'Light is the material',
+    body: 'Every location, timing, and equipment decision begins and ends with light. We don\'t manufacture it. We find it and wait for it.',
   },
   {
-    heading: 'Unhurried process',
-    body: 'We take fewer commissions than we could. This lets us give each project the time it deserves. Good photography is patient.',
+    heading: 'Less, but better',
+    body: 'We take 25–30 weddings and a limited number of commercial projects a year. Fewer commissions means more time and attention per frame.',
   },
   {
     heading: 'Documentary instinct',
-    body: 'Even in controlled studio work, we\'re searching for the unguarded moment. The best images look like they couldn\'t have been planned.',
+    body: 'Even in a fully planned shoot, we\'re looking for the unguarded moment. The best photographs look like they couldn\'t have been planned.',
   },
 ]
 
@@ -31,70 +25,79 @@ export default function About() {
   return (
     <main>
       {/* Header */}
-      <section className="pt-36 md:pt-44 pb-20 border-b border-[var(--color-border)]">
-        <div className="max-w-[1440px] mx-auto px-8 md:px-16">
+      <section style={{ paddingTop: 'clamp(100px, 12vw, 160px)', paddingBottom: 64, borderBottom: '1px solid var(--color-border)' }}>
+        <div className="max-w-[1440px] mx-auto px-6 md:px-12">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-end">
             <ScrollReveal>
-              <p className="font-sans text-xs tracking-[0.2em] uppercase text-[var(--color-accent)] mb-4">
+              <p style={{ fontFamily: 'var(--font-sans)', fontWeight: 500, fontSize: '0.72rem', letterSpacing: '0.2em', textTransform: 'uppercase', color: 'var(--color-accent)', marginBottom: 14 }}>
                 About
               </p>
-              <h1 className="font-display font-light text-5xl md:text-7xl leading-none tracking-[-0.03em] text-[var(--color-warm-white)]">
+              <h1 style={{ fontFamily: 'var(--font-display)', fontWeight: 800, fontSize: 'clamp(3rem, 8vw, 6rem)', lineHeight: 0.9, letterSpacing: '-0.03em', color: 'var(--color-white)' }}>
                 The Studio
               </h1>
             </ScrollReveal>
             <ScrollReveal delay={0.15} direction="left">
-              <p className="font-sans font-light text-lg text-[var(--color-muted)] leading-relaxed">
-                PopStudios is a photography studio founded in London. We work at the intersection of documentary photography and fine art — unhurried, collaborative, and obsessively attentive to light.
+              <p style={{ fontFamily: 'var(--font-sans)', fontWeight: 300, fontSize: '1rem', color: 'var(--color-muted)', lineHeight: 1.8, maxWidth: 420 }}>
+                PopStudios is a Mumbai-based photography studio working at the intersection of documentary and fine art — obsessively attentive to light, honest about emotion.
               </p>
             </ScrollReveal>
           </div>
         </div>
       </section>
 
-      {/* Portrait + bio */}
-      <section className="max-w-[1440px] mx-auto px-8 md:px-16 py-24 md:py-36">
+      {/* Founder bio */}
+      <section className="max-w-[1440px] mx-auto px-6 md:px-12" style={{ paddingTop: 'clamp(60px, 8vw, 100px)', paddingBottom: 'clamp(60px, 8vw, 100px)' }}>
         <div className="grid grid-cols-1 md:grid-cols-12 gap-12 md:gap-16 items-start">
           <ScrollReveal className="md:col-span-5">
-            {/* {/* REPLACE: lead photographer portrait */}
-            <div className="aspect-[3/4] overflow-hidden bg-[var(--color-surface)]">
+            <div className="relative overflow-hidden" style={{ aspectRatio: '3/4', background: 'var(--color-surface)' }}>
               <img
                 src="https://images.unsplash.com/photo-1554151228-14d9def656e4?auto=format&fit=crop&w=900&q=80"
-                alt="Lead photographer in natural window light"
+                alt="Rohan Kapoor, founder photographer in his Bandra studio"
                 className="w-full h-full object-cover"
                 loading="eager"
               />
+              <div className="absolute bottom-0 left-0 right-0" style={{ padding: '24px 24px', background: 'linear-gradient(to top, rgba(8,8,8,0.9) 0%, transparent 100%)' }}>
+                <p style={{ fontFamily: 'var(--font-display)', fontWeight: 700, fontSize: '1rem', color: 'var(--color-white)' }}>Rohan Kapoor</p>
+                <p style={{ fontFamily: 'var(--font-sans)', fontWeight: 300, fontSize: '0.75rem', color: 'var(--color-accent)', marginTop: 2 }}>Founder & Lead Photographer</p>
+              </div>
             </div>
           </ScrollReveal>
 
-          <ScrollReveal delay={0.15} direction="left" className="md:col-span-6 md:col-start-7 md:pt-12">
-            <h2 className="font-display font-light text-3xl md:text-4xl text-[var(--color-warm-white)] leading-tight mb-8">
-              Alex PopCameron,<br />
-              <em className="text-[var(--color-muted)]">Founder &amp; Lead Photographer</em>
+          <ScrollReveal delay={0.15} direction="left" className="md:col-span-6 md:col-start-7 md:pt-10">
+            <p style={{ fontFamily: 'var(--font-sans)', fontWeight: 500, fontSize: '0.72rem', letterSpacing: '0.18em', textTransform: 'uppercase', color: 'var(--color-accent)', marginBottom: 18 }}>
+              Founder
+            </p>
+            <h2 style={{ fontFamily: 'var(--font-display)', fontWeight: 800, fontSize: 'clamp(1.8rem, 3vw, 2.4rem)', color: 'var(--color-white)', lineHeight: 1.1, marginBottom: 24 }}>
+              "A photograph should make you feel something before you understand it."
             </h2>
-            <div className="space-y-5 font-sans font-light text-[var(--color-muted)] leading-relaxed">
+            <div style={{ display: 'flex', flexDirection: 'column', gap: 16, fontFamily: 'var(--font-sans)', fontWeight: 300, color: 'var(--color-muted)', lineHeight: 1.8, fontSize: '0.9rem' }}>
               <p>
-                Alex began working as a photographer after a decade in documentary filmmaking. The transition brought a filmmaker's instinct for narrative to still images — a way of thinking about time, sequence, and what lies between decisive moments.
+                Rohan Kapoor started PopStudios in 2017 after years working as a photojournalist for publications across South Asia. The move to commercial and wedding work wasn't a compromise — it was a different canvas for the same obsession.
               </p>
               <p>
-                Based between London and wherever the work requires, Alex has photographed on six continents and in every lighting condition that nature and architecture can produce. The throughline is always the same: find the light.
+                Based in Bandra, Mumbai, he's shot weddings from Kerala backwaters to Rajasthan forts, portraits of founders, musicians, and athletes, and commercial campaigns for brands building something real.
               </p>
               <p>
-                PopStudios takes on between 20 and 30 commissions per year — editorial, commercial, portrait, and wedding — chosen for the quality of the collaboration as much as the brief.
+                The studio takes on 25–30 weddings per year and a small number of commercial and portrait projects — chosen for the quality of the collaboration, not just the brief.
               </p>
             </div>
 
-            <div className="mt-10 flex gap-6">
+            <div style={{ marginTop: 32, display: 'flex', gap: 24 }}>
               <a
-                href="https://instagram.com"
+                href="https://instagram.com/popstudios"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="font-sans text-xs tracking-[0.14em] uppercase text-[var(--color-muted)] hover:text-[var(--color-warm-white)] transition-colors"
+                style={{ fontFamily: 'var(--font-sans)', fontWeight: 500, fontSize: '0.72rem', letterSpacing: '0.14em', textTransform: 'uppercase', color: 'var(--color-muted)', transition: 'color 0.15s' }}
+                onMouseEnter={e => e.currentTarget.style.color = 'var(--color-white)'}
+                onMouseLeave={e => e.currentTarget.style.color = 'var(--color-muted)'}
               >
-                Instagram
+                @popstudios
               </a>
               <a
-                href="mailto:hello@popstudios.com"
-                className="font-sans text-xs tracking-[0.14em] uppercase text-[var(--color-muted)] hover:text-[var(--color-warm-white)] transition-colors"
+                href="mailto:hello@popstudios.in"
+                style={{ fontFamily: 'var(--font-sans)', fontWeight: 500, fontSize: '0.72rem', letterSpacing: '0.14em', textTransform: 'uppercase', color: 'var(--color-muted)', transition: 'color 0.15s' }}
+                onMouseEnter={e => e.currentTarget.style.color = 'var(--color-white)'}
+                onMouseLeave={e => e.currentTarget.style.color = 'var(--color-muted)'}
               >
                 Email
               </a>
@@ -104,28 +107,28 @@ export default function About() {
       </section>
 
       {/* Philosophy */}
-      <section className="border-t border-[var(--color-border)] py-24 md:py-36">
-        <div className="max-w-[1440px] mx-auto px-8 md:px-16">
+      <section style={{ borderTop: '1px solid var(--color-border)', paddingTop: 'clamp(60px, 8vw, 100px)', paddingBottom: 'clamp(60px, 8vw, 100px)' }}>
+        <div className="max-w-[1440px] mx-auto px-6 md:px-12">
           <ScrollReveal>
-            <p className="font-sans text-xs tracking-[0.2em] uppercase text-[var(--color-accent)] mb-4">
+            <p style={{ fontFamily: 'var(--font-sans)', fontWeight: 500, fontSize: '0.72rem', letterSpacing: '0.2em', textTransform: 'uppercase', color: 'var(--color-accent)', marginBottom: 12 }}>
               Philosophy
             </p>
-            <h2 className="font-display font-light text-4xl md:text-5xl text-[var(--color-warm-white)] leading-tight tracking-[-0.02em] mb-16 md:mb-20">
+            <h2 style={{ fontFamily: 'var(--font-display)', fontWeight: 800, fontSize: 'clamp(2rem, 4vw, 3rem)', lineHeight: 1, letterSpacing: '-0.03em', color: 'var(--color-white)', marginBottom: 56 }}>
               How we work
             </h2>
           </ScrollReveal>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-16">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-10 md:gap-14">
             {philosophy.map((item, i) => (
               <ScrollReveal key={item.heading} delay={i * 0.1}>
                 <div>
-                  <p className="font-sans text-[10px] tracking-[0.2em] uppercase text-[var(--color-muted-dark)] mb-4">
+                  <p style={{ fontFamily: 'var(--font-display)', fontWeight: 800, fontSize: '0.62rem', letterSpacing: '0.2em', textTransform: 'uppercase', color: 'var(--color-muted-dark)', marginBottom: 16 }}>
                     0{i + 1}
                   </p>
-                  <h3 className="font-display font-light text-2xl text-[var(--color-warm-white)] mb-4">
+                  <h3 style={{ fontFamily: 'var(--font-display)', fontWeight: 700, fontSize: '1.25rem', color: 'var(--color-white)', marginBottom: 12 }}>
                     {item.heading}
                   </h3>
-                  <p className="font-sans font-light text-sm text-[var(--color-muted)] leading-relaxed">
+                  <p style={{ fontFamily: 'var(--font-sans)', fontWeight: 300, fontSize: '0.85rem', color: 'var(--color-muted)', lineHeight: 1.8 }}>
                     {item.body}
                   </p>
                 </div>
@@ -135,14 +138,13 @@ export default function About() {
         </div>
       </section>
 
-      {/* Studio image */}
-      <section className="max-w-[1440px] mx-auto px-8 md:px-16 pb-24 md:pb-36">
+      {/* Studio wide shot */}
+      <section className="max-w-[1440px] mx-auto px-6 md:px-12" style={{ paddingBottom: 'clamp(60px, 8vw, 100px)' }}>
         <ScrollReveal>
-          {/* {/* REPLACE: studio/workspace photograph */}
-          <div className="aspect-[16/7] overflow-hidden bg-[var(--color-surface)]">
+          <div className="overflow-hidden" style={{ aspectRatio: '16/7', background: 'var(--color-surface)' }}>
             <img
               src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1920&q=80"
-              alt="Studio workspace — large format printing tables and light boards"
+              alt="PopStudios Bandra workspace and equipment"
               className="w-full h-full object-cover"
               loading="lazy"
             />
@@ -150,59 +152,52 @@ export default function About() {
         </ScrollReveal>
       </section>
 
-      {/* Press */}
-      <section className="border-t border-[var(--color-border)] py-20 md:py-28">
-        <div className="max-w-[1440px] mx-auto px-8 md:px-16">
+      {/* Clients */}
+      <section style={{ borderTop: '1px solid var(--color-border)', paddingTop: 'clamp(60px, 8vw, 100px)', paddingBottom: 'clamp(60px, 8vw, 100px)' }}>
+        <div className="max-w-[1440px] mx-auto px-6 md:px-12">
           <ScrollReveal>
-            <p className="font-sans text-xs tracking-[0.2em] uppercase text-[var(--color-accent)] mb-12">
-              Press &amp; Publications
+            <p style={{ fontFamily: 'var(--font-sans)', fontWeight: 500, fontSize: '0.72rem', letterSpacing: '0.2em', textTransform: 'uppercase', color: 'var(--color-accent)', marginBottom: 40 }}>
+              Brands &amp; Publications
             </p>
           </ScrollReveal>
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8 mb-20">
-            {press.map((name, i) => (
-              <ScrollReveal key={name} delay={i * 0.07}>
-                <p className="font-display font-light text-lg text-[var(--color-muted)] hover:text-[var(--color-warm-white)] transition-colors duration-200 cursor-default">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-x-8 gap-y-5">
+            {clients.map((name, i) => (
+              <ScrollReveal key={name} delay={i * 0.05}>
+                <p
+                  style={{ fontFamily: 'var(--font-display)', fontWeight: 600, fontSize: '1rem', color: 'var(--color-muted)', cursor: 'default', transition: 'color 0.15s' }}
+                  onMouseEnter={e => e.currentTarget.style.color = 'var(--color-white)'}
+                  onMouseLeave={e => e.currentTarget.style.color = 'var(--color-muted)'}
+                >
                   {name}
                 </p>
               </ScrollReveal>
             ))}
           </div>
-
-          <div className="border-t border-[var(--color-border)] pt-16">
-            <ScrollReveal>
-              <p className="font-sans text-xs tracking-[0.2em] uppercase text-[var(--color-accent)] mb-12">
-                Selected Clients
-              </p>
-            </ScrollReveal>
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-x-8 gap-y-4">
-              {clients.map((name, i) => (
-                <ScrollReveal key={name} delay={i * 0.05}>
-                  <p className="font-sans font-light text-sm text-[var(--color-muted)]">{name}</p>
-                </ScrollReveal>
-              ))}
-            </div>
-          </div>
         </div>
       </section>
 
       {/* CTA */}
-      <section className="border-t border-[var(--color-border)] py-24 md:py-32">
-        <div className="max-w-[1440px] mx-auto px-8 md:px-16">
+      <section style={{ borderTop: '1px solid var(--color-border)', paddingTop: 'clamp(60px, 8vw, 100px)', paddingBottom: 'clamp(60px, 8vw, 100px)' }}>
+        <div className="max-w-[1440px] mx-auto px-6 md:px-12">
           <ScrollReveal>
             <div className="flex flex-col md:flex-row md:items-center justify-between gap-8">
-              <h2 className="font-display font-light text-4xl md:text-5xl text-[var(--color-warm-white)] leading-tight tracking-[-0.02em]">
-                Ready to begin?
+              <h2 style={{ fontFamily: 'var(--font-display)', fontWeight: 800, fontSize: 'clamp(2rem, 5vw, 3.5rem)', color: 'var(--color-white)', lineHeight: 1, letterSpacing: '-0.03em' }}>
+                Let's make something.
               </h2>
-              <div className="flex gap-4">
+              <div className="flex gap-3">
                 <Link
                   to="/portfolio"
-                  className="font-sans text-sm font-medium tracking-[0.1em] uppercase text-[var(--color-muted)] border border-[var(--color-border)] px-6 py-3 hover:text-[var(--color-warm-white)] hover:border-[var(--color-muted-dark)] transition-colors duration-200"
+                  style={{ fontFamily: 'var(--font-sans)', fontWeight: 600, fontSize: '0.78rem', letterSpacing: '0.1em', textTransform: 'uppercase', color: 'var(--color-muted)', border: '1px solid var(--color-border)', padding: '12px 20px', transition: 'all 0.15s', whiteSpace: 'nowrap' }}
+                  onMouseEnter={e => { e.currentTarget.style.color = 'var(--color-white)'; e.currentTarget.style.borderColor = 'var(--color-muted-dark)' }}
+                  onMouseLeave={e => { e.currentTarget.style.color = 'var(--color-muted)'; e.currentTarget.style.borderColor = 'var(--color-border)' }}
                 >
                   View Work
                 </Link>
                 <Link
                   to="/contact"
-                  className="font-sans text-sm font-medium tracking-[0.1em] uppercase bg-[var(--color-warm-white)] text-[var(--color-black)] px-6 py-3 hover:bg-[var(--color-accent)] transition-colors duration-200"
+                  style={{ fontFamily: 'var(--font-sans)', fontWeight: 700, fontSize: '0.78rem', letterSpacing: '0.1em', textTransform: 'uppercase', background: 'var(--color-accent)', color: 'var(--color-black)', padding: '12px 20px', transition: 'background 0.15s', whiteSpace: 'nowrap' }}
+                  onMouseEnter={e => e.currentTarget.style.background = '#e04400'}
+                  onMouseLeave={e => e.currentTarget.style.background = 'var(--color-accent)'}
                 >
                   Get in Touch
                 </Link>

@@ -1,49 +1,55 @@
 import { Link } from 'react-router-dom'
-import { motion } from 'framer-motion'
 import ScrollReveal from '../components/ScrollReveal'
-import { packages, addOns } from '../data/services'
+import { packages, PROCESS, TESTIMONIALS } from '../data/services'
 
 function PackageCard({ pkg, index }) {
   return (
     <ScrollReveal delay={index * 0.1}>
-      <div className="border border-[var(--color-border)] p-8 md:p-10 group hover:border-[var(--color-accent)] transition-colors duration-300 flex flex-col h-full">
-        <div className="mb-8">
-          <p className="font-sans text-[10px] tracking-[0.2em] uppercase text-[var(--color-muted-dark)] mb-4">
+      <div
+        className="group flex flex-col h-full transition-colors duration-200"
+        style={{ border: '1px solid var(--color-border)', padding: '36px 32px' }}
+        onMouseEnter={e => e.currentTarget.style.borderColor = 'var(--color-accent)'}
+        onMouseLeave={e => e.currentTarget.style.borderColor = 'var(--color-border)'}
+      >
+        <div style={{ marginBottom: 28 }}>
+          <p style={{ fontFamily: 'var(--font-display)', fontWeight: 800, fontSize: '0.62rem', letterSpacing: '0.2em', textTransform: 'uppercase', color: 'var(--color-muted-dark)', marginBottom: 16 }}>
             0{index + 1}
           </p>
-          <h2 className="font-display font-light text-3xl text-[var(--color-warm-white)] mb-2">
+          <h2 style={{ fontFamily: 'var(--font-display)', fontWeight: 800, fontSize: '1.8rem', color: 'var(--color-white)', marginBottom: 8, lineHeight: 1 }}>
             {pkg.name}
           </h2>
-          <p className="font-sans font-light text-sm text-[var(--color-muted)] leading-relaxed">
+          <p style={{ fontFamily: 'var(--font-sans)', fontWeight: 300, fontSize: '0.85rem', color: 'var(--color-muted)', lineHeight: 1.6 }}>
             {pkg.tagline}
           </p>
         </div>
 
-        <div className="flex items-baseline gap-2 mb-8">
-          <span className="font-display font-light text-3xl text-[var(--color-accent)]">
+        <div style={{ display: 'flex', alignItems: 'baseline', gap: 8, marginBottom: 28 }}>
+          <span style={{ fontFamily: 'var(--font-display)', fontWeight: 800, fontSize: '1.8rem', color: 'var(--color-accent)' }}>
             {pkg.price}
           </span>
-          <span className="font-sans text-xs text-[var(--color-muted)] tracking-[0.06em]">
+          <span style={{ fontFamily: 'var(--font-sans)', fontSize: '0.75rem', color: 'var(--color-muted)', letterSpacing: '0.04em' }}>
             / {pkg.duration}
           </span>
         </div>
 
-        <ul className="space-y-3 mb-8 flex-1">
+        <ul style={{ display: 'flex', flexDirection: 'column', gap: 10, marginBottom: 28, flex: 1 }}>
           {pkg.includes.map((item) => (
-            <li key={item} className="flex items-start gap-3">
-              <span className="mt-1.5 w-3 h-px bg-[var(--color-accent)] shrink-0" aria-hidden="true" />
-              <span className="font-sans font-light text-sm text-[var(--color-muted)] leading-relaxed">{item}</span>
+            <li key={item} style={{ display: 'flex', alignItems: 'flex-start', gap: 10 }}>
+              <span style={{ marginTop: 8, width: 16, height: 1.5, background: 'var(--color-accent)', flexShrink: 0, display: 'block' }} aria-hidden="true" />
+              <span style={{ fontFamily: 'var(--font-sans)', fontWeight: 300, fontSize: '0.82rem', color: 'var(--color-muted)', lineHeight: 1.65 }}>{item}</span>
             </li>
           ))}
         </ul>
 
-        <p className="font-sans text-xs text-[var(--color-muted-dark)] leading-relaxed italic border-t border-[var(--color-border)] pt-6 mb-8">
+        <p style={{ fontFamily: 'var(--font-sans)', fontSize: '0.75rem', color: 'var(--color-muted-dark)', lineHeight: 1.65, fontStyle: 'italic', borderTop: '1px solid var(--color-border)', paddingTop: 20, marginBottom: 24 }}>
           {pkg.note}
         </p>
 
         <Link
           to="/contact"
-          className="font-sans text-sm font-medium tracking-[0.1em] uppercase text-[var(--color-warm-white)] border border-[var(--color-border)] group-hover:border-[var(--color-accent)] px-6 py-3 text-center hover:bg-[var(--color-accent)] hover:text-[var(--color-black)] hover:border-[var(--color-accent)] transition-all duration-300 block"
+          style={{ display: 'block', fontFamily: 'var(--font-sans)', fontWeight: 600, fontSize: '0.78rem', letterSpacing: '0.12em', textTransform: 'uppercase', color: 'var(--color-white)', border: '1px solid var(--color-border)', padding: '12px 0', textAlign: 'center', transition: 'all 0.2s' }}
+          onMouseEnter={e => { e.currentTarget.style.background = 'var(--color-accent)'; e.currentTarget.style.borderColor = 'var(--color-accent)'; e.currentTarget.style.color = 'var(--color-black)' }}
+          onMouseLeave={e => { e.currentTarget.style.background = ''; e.currentTarget.style.borderColor = 'var(--color-border)'; e.currentTarget.style.color = 'var(--color-white)' }}
         >
           Inquire
         </Link>
@@ -56,20 +62,20 @@ export default function Services() {
   return (
     <main>
       {/* Header */}
-      <section className="pt-36 md:pt-44 pb-20 border-b border-[var(--color-border)]">
-        <div className="max-w-[1440px] mx-auto px-8 md:px-16">
+      <section style={{ paddingTop: 'clamp(100px, 12vw, 160px)', paddingBottom: 64, borderBottom: '1px solid var(--color-border)' }}>
+        <div className="max-w-[1440px] mx-auto px-6 md:px-12">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-end">
             <ScrollReveal>
-              <p className="font-sans text-xs tracking-[0.2em] uppercase text-[var(--color-accent)] mb-4">
+              <p style={{ fontFamily: 'var(--font-sans)', fontWeight: 500, fontSize: '0.72rem', letterSpacing: '0.2em', textTransform: 'uppercase', color: 'var(--color-accent)', marginBottom: 14 }}>
                 Services
               </p>
-              <h1 className="font-display font-light text-5xl md:text-7xl leading-none tracking-[-0.03em] text-[var(--color-warm-white)]">
+              <h1 style={{ fontFamily: 'var(--font-display)', fontWeight: 800, fontSize: 'clamp(3rem, 8vw, 6rem)', lineHeight: 0.9, letterSpacing: '-0.03em', color: 'var(--color-white)' }}>
                 Packages &amp;<br />Pricing
               </h1>
             </ScrollReveal>
             <ScrollReveal delay={0.15} direction="left">
-              <p className="font-sans font-light text-lg text-[var(--color-muted)] leading-relaxed max-w-md">
-                All projects begin with a conversation. These packages are starting points; most commissions are tailored to the specific brief.
+              <p style={{ fontFamily: 'var(--font-sans)', fontWeight: 300, fontSize: '1rem', color: 'var(--color-muted)', lineHeight: 1.8, maxWidth: 380 }}>
+                Transparent pricing, zero hidden charges. Every project starts with a conversation — these are starting points, not limits.
               </p>
             </ScrollReveal>
           </div>
@@ -77,34 +83,38 @@ export default function Services() {
       </section>
 
       {/* Packages */}
-      <section className="max-w-[1440px] mx-auto px-8 md:px-16 py-24 md:py-36">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-1 md:gap-4">
+      <section className="max-w-[1440px] mx-auto px-6 md:px-12" style={{ paddingTop: 'clamp(60px, 8vw, 100px)', paddingBottom: 'clamp(60px, 8vw, 100px)' }}>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-1 md:gap-4">
           {packages.map((pkg, i) => (
             <PackageCard key={pkg.id} pkg={pkg} index={i} />
           ))}
         </div>
       </section>
 
-      {/* Add-ons */}
-      <section className="border-t border-[var(--color-border)] py-20 md:py-28">
-        <div className="max-w-[1440px] mx-auto px-8 md:px-16">
+      {/* Process */}
+      <section style={{ borderTop: '1px solid var(--color-border)', paddingTop: 'clamp(60px, 8vw, 100px)', paddingBottom: 'clamp(60px, 8vw, 100px)' }}>
+        <div className="max-w-[1440px] mx-auto px-6 md:px-12">
           <ScrollReveal>
-            <p className="font-sans text-xs tracking-[0.2em] uppercase text-[var(--color-accent)] mb-4">
-              Add-ons
+            <p style={{ fontFamily: 'var(--font-sans)', fontWeight: 500, fontSize: '0.72rem', letterSpacing: '0.2em', textTransform: 'uppercase', color: 'var(--color-accent)', marginBottom: 12 }}>
+              Process
             </p>
-            <h2 className="font-display font-light text-4xl text-[var(--color-warm-white)] leading-tight mb-14 md:mb-16">
-              Optional extras
+            <h2 style={{ fontFamily: 'var(--font-display)', fontWeight: 800, fontSize: 'clamp(2rem, 4vw, 3rem)', lineHeight: 1, letterSpacing: '-0.03em', color: 'var(--color-white)', marginBottom: 56 }}>
+              How it works
             </h2>
           </ScrollReveal>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-px bg-[var(--color-border)]">
-            {addOns.map((item, i) => (
-              <ScrollReveal key={item.name} delay={i * 0.08}>
-                <div className="bg-[var(--color-black)] p-8 hover:bg-[var(--color-surface)] transition-colors duration-300">
-                  <h3 className="font-display font-light text-xl text-[var(--color-warm-white)] mb-2">
-                    {item.name}
+
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-8 md:gap-10">
+            {PROCESS.map((step, i) => (
+              <ScrollReveal key={step.n} delay={i * 0.08}>
+                <div>
+                  <p style={{ fontFamily: 'var(--font-display)', fontWeight: 800, fontSize: '3rem', color: 'var(--color-border)', marginBottom: 20, lineHeight: 1 }}>
+                    {step.n}
+                  </p>
+                  <h3 style={{ fontFamily: 'var(--font-display)', fontWeight: 700, fontSize: '1.15rem', color: 'var(--color-white)', marginBottom: 10 }}>
+                    {step.title}
                   </h3>
-                  <p className="font-sans font-light text-sm text-[var(--color-muted)] leading-relaxed">
-                    {item.description}
+                  <p style={{ fontFamily: 'var(--font-sans)', fontWeight: 300, fontSize: '0.82rem', color: 'var(--color-muted)', lineHeight: 1.75 }}>
+                    {step.body}
                   </p>
                 </div>
               </ScrollReveal>
@@ -113,31 +123,26 @@ export default function Services() {
         </div>
       </section>
 
-      {/* Process */}
-      <section className="border-t border-[var(--color-border)] py-20 md:py-28">
-        <div className="max-w-[1440px] mx-auto px-8 md:px-16">
+      {/* Testimonials */}
+      <section style={{ background: 'var(--color-surface)', borderTop: '1px solid var(--color-border)', paddingTop: 'clamp(60px, 8vw, 100px)', paddingBottom: 'clamp(60px, 8vw, 100px)' }}>
+        <div className="max-w-[1440px] mx-auto px-6 md:px-12">
           <ScrollReveal>
-            <p className="font-sans text-xs tracking-[0.2em] uppercase text-[var(--color-accent)] mb-4">
-              Process
+            <p style={{ fontFamily: 'var(--font-sans)', fontWeight: 500, fontSize: '0.72rem', letterSpacing: '0.2em', textTransform: 'uppercase', color: 'var(--color-accent)', marginBottom: 40 }}>
+              Client Voices
             </p>
-            <h2 className="font-display font-light text-4xl text-[var(--color-warm-white)] leading-tight mb-14 md:mb-16">
-              How it works
-            </h2>
           </ScrollReveal>
-
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-8 md:gap-12">
-            {[
-              { n: '01', title: 'Inquiry', body: 'Fill in the contact form. We\'ll respond within 48 hours to arrange an initial conversation.' },
-              { n: '02', title: 'Brief', body: 'We spend time understanding the project, the light conditions, and what a successful outcome looks like.' },
-              { n: '03', title: 'Shoot', body: 'The production itself. We work methodically, leaving room for the unexpected.' },
-              { n: '04', title: 'Delivery', body: 'Edited finals in your agreed formats, within the agreed timeline. No rush fees, no surprises.' },
-            ].map((step, i) => (
-              <ScrollReveal key={step.n} delay={i * 0.1}>
-                <div>
-                  <p className="font-display text-5xl font-light text-[var(--color-border)] mb-6">{step.n}</p>
-                  <h3 className="font-display font-light text-xl text-[var(--color-warm-white)] mb-3">{step.title}</h3>
-                  <p className="font-sans font-light text-sm text-[var(--color-muted)] leading-relaxed">{step.body}</p>
-                </div>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12">
+            {TESTIMONIALS.map((t, i) => (
+              <ScrollReveal key={t.name} delay={i * 0.1}>
+                <p style={{ fontFamily: 'var(--font-display)', fontWeight: 500, fontSize: '1rem', color: 'var(--color-white)', lineHeight: 1.65, marginBottom: 16, fontStyle: 'italic' }}>
+                  "{t.quote}"
+                </p>
+                <p style={{ fontFamily: 'var(--font-sans)', fontWeight: 600, fontSize: '0.78rem', color: 'var(--color-accent)' }}>
+                  {t.name}
+                </p>
+                <p style={{ fontFamily: 'var(--font-sans)', fontWeight: 300, fontSize: '0.72rem', color: 'var(--color-muted)', marginTop: 2 }}>
+                  {t.detail}
+                </p>
               </ScrollReveal>
             ))}
           </div>
@@ -145,21 +150,23 @@ export default function Services() {
       </section>
 
       {/* CTA */}
-      <section className="border-t border-[var(--color-border)] py-24 md:py-32">
-        <div className="max-w-[1440px] mx-auto px-8 md:px-16 text-center">
+      <section style={{ borderTop: '1px solid var(--color-border)', paddingTop: 'clamp(80px, 10vw, 120px)', paddingBottom: 'clamp(80px, 10vw, 120px)' }}>
+        <div className="max-w-[1440px] mx-auto px-6 md:px-12 text-center">
           <ScrollReveal>
-            <h2 className="font-display font-light text-4xl md:text-6xl text-[var(--color-warm-white)] leading-tight tracking-[-0.02em] mb-8">
-              Ready to begin?
+            <h2 style={{ fontFamily: 'var(--font-display)', fontWeight: 800, fontSize: 'clamp(2rem, 5vw, 4rem)', lineHeight: 1, letterSpacing: '-0.03em', color: 'var(--color-white)', marginBottom: 20 }}>
+              Ready to book?
             </h2>
-            <p className="font-sans font-light text-[var(--color-muted)] mb-10 max-w-md mx-auto">
-              Limited availability. We take fewer commissions than we could.
+            <p style={{ fontFamily: 'var(--font-sans)', fontWeight: 300, color: 'var(--color-muted)', fontSize: '0.93rem', marginBottom: 36 }}>
+              We respond within 24 hours. WhatsApp or email — your choice.
             </p>
             <Link
               to="/contact"
-              className="inline-flex items-center gap-3 font-sans font-medium text-sm tracking-[0.1em] uppercase bg-[var(--color-accent)] text-[var(--color-black)] px-8 py-4 hover:bg-[var(--color-warm-white)] transition-colors duration-300"
+              style={{ display: 'inline-flex', alignItems: 'center', gap: 12, fontFamily: 'var(--font-sans)', fontWeight: 700, fontSize: '0.82rem', letterSpacing: '0.12em', textTransform: 'uppercase', background: 'var(--color-accent)', color: 'var(--color-black)', padding: '16px 36px', transition: 'background 0.2s' }}
+              onMouseEnter={e => e.currentTarget.style.background = '#e04400'}
+              onMouseLeave={e => e.currentTarget.style.background = 'var(--color-accent)'}
             >
-              Start a Conversation
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+              Get in Touch
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                 <path d="M5 12h14M12 5l7 7-7 7" />
               </svg>
             </Link>
