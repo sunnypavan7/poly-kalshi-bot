@@ -1,7 +1,6 @@
-import { useState } from 'react'
+import { useState, useRef } from 'react'
 import { useParams, Link, Navigate } from 'react-router-dom'
 import { motion, useScroll, useTransform, useReducedMotion } from 'framer-motion'
-import { useRef } from 'react'
 import { projects } from '../data/portfolio'
 import Lightbox from '../components/Lightbox'
 import ScrollReveal from '../components/ScrollReveal'
@@ -14,13 +13,7 @@ function ParallaxImage({ src, alt, index }) {
 
   return (
     <div ref={ref} className={`overflow-hidden ${index % 2 === 0 ? 'md:col-span-2' : 'md:col-span-1'}`}>
-      <motion.img
-        src={src}
-        alt={alt}
-        style={{ y }}
-        className="w-full h-full object-cover"
-        loading="lazy"
-      />
+      <motion.img src={src} alt={alt} style={{ y }} className="w-full h-full object-cover" loading="lazy" />
     </div>
   )
 }
@@ -38,32 +31,23 @@ export default function Project() {
   return (
     <main>
       {/* Hero */}
-      <section className="relative h-[70vh] md:h-screen overflow-hidden">
+      <section className="relative overflow-hidden" style={{ height: '70vh', minHeight: 480 }}>
         <img
           src={project.cover}
           alt={project.coverAlt}
           className="absolute inset-0 w-full h-full object-cover"
           loading="eager"
         />
-        <div
-          className="absolute inset-0"
-          style={{ background: 'linear-gradient(to bottom, rgba(0,0,0,0.2) 0%, rgba(0,0,0,0.65) 100%)' }}
-          aria-hidden="true"
-        />
-        <div className="relative z-10 h-full flex flex-col justify-end pb-16 md:pb-24 px-8 md:px-16 max-w-[1440px] mx-auto">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
-          >
-            <p className="font-sans text-xs tracking-[0.2em] uppercase text-[var(--color-accent)] mb-3">
+        <div className="absolute inset-0" style={{ background: 'linear-gradient(to bottom, rgba(8,8,8,0.15) 0%, rgba(8,8,8,0.72) 100%)' }} aria-hidden="true" />
+        <div className="relative z-10 h-full flex flex-col justify-end max-w-[1440px] mx-auto px-6 md:px-12" style={{ paddingBottom: 'clamp(48px, 6vw, 80px)' }}>
+          <motion.div initial={{ opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.9, delay: 0.25, ease: [0.16, 1, 0.3, 1] }}>
+            <p style={{ fontFamily: 'var(--font-sans)', fontWeight: 600, fontSize: '0.65rem', letterSpacing: '0.22em', textTransform: 'uppercase', color: 'var(--color-accent)', marginBottom: 12 }}>
               {project.category}
             </p>
-            <h1 className="font-display font-light leading-none tracking-[-0.03em] text-[var(--color-warm-white)] mb-4"
-                style={{ fontSize: 'clamp(3rem, 8vw, 7rem)' }}>
+            <h1 style={{ fontFamily: 'var(--font-display)', fontWeight: 800, lineHeight: 0.9, letterSpacing: '-0.03em', color: 'var(--color-white)', marginBottom: 14, fontSize: 'clamp(3rem, 8vw, 7rem)' }}>
               {project.title}
             </h1>
-            <p className="font-sans font-light text-[var(--color-warm-white)]/70 text-lg italic">
+            <p style={{ fontFamily: 'var(--font-sans)', fontWeight: 300, color: 'rgba(245,245,245,0.65)', fontSize: '1.05rem', fontStyle: 'italic' }}>
               {project.excerpt}
             </p>
           </motion.div>
@@ -71,8 +55,8 @@ export default function Project() {
       </section>
 
       {/* Meta */}
-      <section className="border-b border-[var(--color-border)]">
-        <div className="max-w-[1440px] mx-auto px-8 md:px-16 py-10 md:py-12">
+      <section style={{ borderBottom: '1px solid var(--color-border)' }}>
+        <div className="max-w-[1440px] mx-auto px-6 md:px-12 py-8 md:py-10">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
             {[
               { label: 'Client', value: project.client },
@@ -81,8 +65,8 @@ export default function Project() {
               { label: 'Year', value: project.year },
             ].map(({ label, value }) => (
               <div key={label}>
-                <p className="font-sans text-[10px] tracking-[0.2em] uppercase text-[var(--color-muted-dark)] mb-2">{label}</p>
-                <p className="font-sans text-sm text-[var(--color-warm-white)]">{value}</p>
+                <p style={{ fontFamily: 'var(--font-sans)', fontWeight: 600, fontSize: '0.62rem', letterSpacing: '0.2em', textTransform: 'uppercase', color: 'var(--color-muted-dark)', marginBottom: 6 }}>{label}</p>
+                <p style={{ fontFamily: 'var(--font-sans)', fontWeight: 300, fontSize: '0.88rem', color: 'var(--color-white)' }}>{value}</p>
               </div>
             ))}
           </div>
@@ -90,39 +74,38 @@ export default function Project() {
       </section>
 
       {/* Story */}
-      <section className="max-w-[1440px] mx-auto px-8 md:px-16 py-20 md:py-28">
+      <section className="max-w-[1440px] mx-auto px-6 md:px-12" style={{ paddingTop: 64, paddingBottom: 64 }}>
         <div className="grid grid-cols-1 md:grid-cols-12 gap-12">
           <ScrollReveal className="md:col-span-7 md:col-start-3">
-            <p className="font-sans font-light text-lg leading-relaxed text-[var(--color-muted)]">
+            <p style={{ fontFamily: 'var(--font-sans)', fontWeight: 300, fontSize: '1.05rem', color: 'var(--color-muted)', lineHeight: 1.8 }}>
               {project.description}
             </p>
           </ScrollReveal>
         </div>
       </section>
 
-      {/* Image gallery */}
-      <section className="max-w-[1440px] mx-auto px-8 md:px-16 pb-20 md:pb-32">
+      {/* Gallery */}
+      <section className="max-w-[1440px] mx-auto px-6 md:px-12" style={{ paddingBottom: 80 }}>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-1">
           {project.images.map((image, i) => (
             <ScrollReveal key={i} delay={i * 0.1}>
               <button
                 onClick={() => openLightbox(i)}
-                className={`group block relative overflow-hidden bg-[var(--color-surface)] w-full cursor-pointer ${
-                  i === 0 ? 'md:col-span-2 aspect-[16/10]' : 'aspect-[4/5]'
-                }`}
+                className={`group block relative overflow-hidden w-full cursor-pointer ${i === 0 ? 'md:col-span-2' : ''}`}
+                style={{ aspectRatio: i === 0 ? '16/10' : '4/5', background: 'var(--color-surface)' }}
                 aria-label={`View full image: ${image.alt}`}
               >
                 <img
                   src={image.src}
                   alt={image.alt}
-                  className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-103"
+                  className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
                   loading="lazy"
                 />
-                <div className="absolute inset-0 bg-black/0 group-hover:bg-black/15 transition-colors duration-300 flex items-center justify-center">
-                  <svg
-                    className="opacity-0 group-hover:opacity-100 transition-opacity duration-300 text-white"
-                    width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1"
-                  >
+                <div className="absolute inset-0 flex items-center justify-center" style={{ background: 'rgba(0,0,0,0)', transition: 'background 0.3s' }}
+                  onMouseEnter={e => e.currentTarget.style.background = 'rgba(0,0,0,0.18)'}
+                  onMouseLeave={e => e.currentTarget.style.background = 'rgba(0,0,0,0)'}
+                >
+                  <svg className="opacity-0 group-hover:opacity-100 transition-opacity duration-300" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="1">
                     <path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7" />
                   </svg>
                 </div>
@@ -132,24 +115,30 @@ export default function Project() {
         </div>
       </section>
 
-      {/* Navigation to next/prev projects */}
-      <section className="border-t border-[var(--color-border)]">
-        <div className="max-w-[1440px] mx-auto px-8 md:px-16 py-12">
+      {/* Nav */}
+      <section style={{ borderTop: '1px solid var(--color-border)' }}>
+        <div className="max-w-[1440px] mx-auto px-6 md:px-12 py-10">
           <div className="flex items-center justify-between">
             <Link
               to="/portfolio"
-              className="font-sans text-xs tracking-[0.14em] uppercase text-[var(--color-muted)] hover:text-[var(--color-warm-white)] transition-colors duration-200 flex items-center gap-2"
+              className="flex items-center gap-2 transition-colors"
+              style={{ fontFamily: 'var(--font-sans)', fontWeight: 500, fontSize: '0.72rem', letterSpacing: '0.14em', textTransform: 'uppercase', color: 'var(--color-muted)' }}
+              onMouseEnter={e => e.currentTarget.style.color = 'var(--color-white)'}
+              onMouseLeave={e => e.currentTarget.style.color = 'var(--color-muted)'}
             >
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
                 <path d="M19 12H5M12 19l-7-7 7-7" />
               </svg>
               All Projects
             </Link>
             <Link
               to="/contact"
-              className="font-sans text-xs tracking-[0.14em] uppercase text-[var(--color-muted)] hover:text-[var(--color-accent)] transition-colors duration-200"
+              className="transition-colors"
+              style={{ fontFamily: 'var(--font-sans)', fontWeight: 500, fontSize: '0.72rem', letterSpacing: '0.14em', textTransform: 'uppercase', color: 'var(--color-muted)' }}
+              onMouseEnter={e => e.currentTarget.style.color = 'var(--color-accent)'}
+              onMouseLeave={e => e.currentTarget.style.color = 'var(--color-muted)'}
             >
-              Inquire about a project
+              Book a similar shoot
             </Link>
           </div>
         </div>
